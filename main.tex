@@ -1,27 +1,53 @@
-\documentclass{amsart}
+\documentclass{amsbook}
 
 \input{StandardPaper2.tex}
 
-\begin{document}
+\title{Curvature Flows And Convex Geometry}
 
-\title[]
- {}
+\author[P. Bryan]{Paul Bryan}
+\address{School of Mathematics and Physics, The University of Queensland, St Lucia, Brisbane, 4072, Australia}
+\email{pabryan@gmail.com}
+\author[M.N. Ivaki]{Mohammad N. Ivaki}
+\address{Institut f\"{u}r Diskrete Mathematik und Geometrie, Technische Universit\"{a}t Wien,
+Wiedner Hauptstr. 8--10, 1040 Wien, Austria}
+\address{Department of Mathematics and Statistics, Concordia University, Montreal, QC,
+H3G 1M8, Canada}
+\email{mohammad.ivaki@tuwien.ac.at}
+\author[J. Scheuer]{Julian Scheuer}
+\address{Albert-Ludwigs-Universit\"{a}t,
+Mathematisches Institut, Eckerstr. 1, 79104
+Freiburg, Germany}
+\email{julian.scheuer@math.uni-freiburg.de}
 
-\curraddr{}
-\email{}
-\date{\today}
-
-\dedicatory{}
 \subjclass[2010]{}
 \keywords{}
 
-\begin{abstract}
-\end{abstract}
+\begin{document}
 
 \maketitle
 
-\section{Introduction}
-\label{sec:intro}
+\chapter*{Preface}
 
+\part{Curvature Flows}
+
+\input{curvature_flows}
+
+\part{Problems In Convex Geometry}
+
+\input{convex_geometry}
+
+\appendix
+
+\chapter[DG Background]{Differential Geometry Background}
+
+\input{dg_background}
+
+\chapter[Convex Background]{Convex Geometry Background}
+
+\input{convex_background}
+
+\chapter[PDE Background]{Partial Differential Equations Background}
+
+\input{pde_background}
 
 \end{document}
