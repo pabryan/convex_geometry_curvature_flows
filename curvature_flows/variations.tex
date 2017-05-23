@@ -8,8 +8,89 @@ F : M \times I \to N
 where \(I\) is an interval. We write \(F_t = F(\cdot, t)\). A one-parameter family of embeddings (immersions) is a one parameter family such that each \(F_t\) is an embedding (immersion).
 \end{defn}
 
-\section{Variations of Maps}
+\begin{defn}
+Let \(F_t\) be a one-parameter family of maps. The \emph{variation vector field},
+\[
+V_t = F_{\ast} \partial_t
+\]
+We also sometimes use the notation \(\dot{F} = \partial_t F = V\).
+\end{defn}
+
+For each \(t\), \(V_t \in \Gamma(F_t^{\ast} TN, M)\)
+
+\begin{defn}
+Let \(G : M \to N\). A \emph{variation} of \(G\) is a one-parameter family of maps \(F_t\), \(t \in (-\epsilon, \epsilon)\) such that \(F_0 = G\).
+\end{defn}
+
+In the case of variations, we are interested in the map \(G\) and not typically the full one-parameter family \(F_t\). In this case, the variation vector is \(V_0\).
+
+\begin{lemma}
+Let \(V \in \Gamma(G^{\ast} N, M)\). Then there exists local variations \(F_t\) of \(G\) such that \(\dot{F}_{t=0} = V\) locally. If \(M\) is compact, then there exists a global variation \(F_t\) with \(\dot{F}_{t=0} = V\).
+\end{lemma}
+
+\begin{proof}
+Certainly this works for immersion but perhaps it works in the generality given here?
+\end{proof}
+
+In the case where each \(F_t\) is an immersion, we have the splitting
+\[
+F_t^{\ast} TN \simeq TM \oplus \nu_t M
+\]
+with we decompose the variation vector
+\[
+V_t = V^{\tang}_t + V^{\perp}_t
+\]
+into the tangential \(V^{\tang}_t\) and normal \(V^{\perp}_t\) parts.
+
+Let us now compute the variation of the differential \(dF_t\). The principle point to keep in mind is that \(dF_t \in \Gamma(T^{\ast} M \otimes F_t^{\ast} TN)\) which is a changing bundle with respect to \(t\) and we must account for this change. Another way to think of this is that the fibre of \(F_t^{\ast} TN\) over \(x\), \((F_t^{\ast} TN)_x = T_{F_t(x)} N\) and again we must take into account the variation of the base point \(F_t(x)\). In other words, we can't directly compute the variation in the fibre since the fibre is itself varying and thus require a connection \(D\) on \(TN\) to ``connect'' the fibres.
+
+\begin{prop}
+The variation of \(dF_t\) is
+\[
+D_t dF_t = DV = (DV)^{\tang} + (DV)^{\perp}.
+\]
+\end{prop}
+
+\begin{proof}
+For a fixed tangent vector \(X \in TM\) and then since \([\partial_t, X] = 0 \Rightarrow [V, F_{\ast} X] = 0\) we compute
+\[
+\begin{split}
+D_t dF_t (X) &= D_V (dF_t (X)) = D_V F_{\ast} X \\
+&= D_{F_{ast} X} V + [V, F_{\ast} X] \\
+&= DV (F_{\ast} X).
+\end{split}
+\]
+\end{proof}
+
+\begin{remark}
+Note that \((DV^{\tang}) \ne D(V^{\tang})\) in general, and likewise for the normal part.
+\end{remark}
+
+Higher derivatives of \(F\) involve the variation of the connection and so we postpone the computation of these variations until we have computed the variation of connections.
 
 \section{Variation of Geometry}
+
+For one-parameter families of tensor fields tangent to \(M\) - i.e. in \(T^p_q M\) we may compute the variation by differentiating in the fibre and thus require no connection. This is similar (but not identical) to the Lie derivative.
+
+\begin{defn}
+A one-parameter family of tensor fields of type \((p, q)\) is a map
+Let \(T : M \times (-\epsilon, \epsilon) \to T^p_q M\) such that \(\pi^p_q \circ T(x, t) = x\) for all \(x\) where \(\pi^p_q : T^p_q M \to M\) is the bundle-projection. The variation of \(T\) is defined as the derivative in the fibre:
+\[
+\partial_t T (x, t) = \lim_{h\to 0} \frac{T(x, t + h) - T(x, t)}{h}.
+\]
+Equivalently,
+\[
+(\partial_t T_t) (X_1, \cdots, X_p, \alpha^1, \cdots, \alpha^q) = \partial_t \left[T_t (X_1, \cdots, X_p, \alpha^1, \cdots, \alpha^q)\right]
+\]
+\end{defn}
+
+Throughout this section \(F_t : M \to N\) will be a one-parameter family of immersions.
+
+\begin{lemma}
+The metric \(g_t\) induced by \(F_t\) has variation
+\[
+\partial_t g_t = \sym \left[(DV)^{\tang}\right]^{\flat}.
+\]
+\end{lemma}
 
 \section{Linearisation of the Flow}
