@@ -93,4 +93,26 @@ The metric \(g_t\) induced by \(F_t\) has variation
 \]
 \end{lemma}
 
+\begin{proof}
+We have
+\[
+\begin{split}
+\partial_t g (X, Y) &= \partial_t \left[g(X, Y)\right] = \partial_t \inpr{F_{\ast} X}{F_{\ast} Y} \\
+&= \inpr{D_V F_{\ast} X}{F_{\ast} Y} + X \leftrightarrow Y.
+\end{split}
+\]
+Recalling that we have \([V, F_{\ast} X] = 0\), then we compute
+\[
+\begin{split}
+\inpr{D_V F_{\ast} X}{F_{\ast} Y} &= \inpr{D_{F_{\ast} X} V}{F_{\ast} Y} \\
+&= \inpr{(D_{F_{\ast} X} V)^{\tang}}{F_{\ast} Y} \\
+&= g((DV)^{\tang} (X), Y)
+\end{split}
+\]
+whence
+\[
+\partial_t g (X, Y) = \sym g((DV)^{\tang} (X), Y).
+\]
+\end{proof}
+
 \section{Linearisation of the Flow}
