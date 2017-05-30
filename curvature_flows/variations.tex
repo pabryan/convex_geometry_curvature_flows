@@ -173,29 +173,31 @@ We use the Koszul formula,
 Keep in mind here that everything takes place on the tangent bundle so the only \(t\) dependence is in \(g\) and \(\nabla\). In particular, the Lie bracket is simply the Lie bracket on \(M\) which has no \(t\) dependence.
 
 Differentiating the Koszul formula and using \(\partial_t \partial_X = \partial_X \partial_t\) gives
-\[
+\begin{equation}
+\label{eq:dt_koszul}
 \begin{split}
 2 g(\partial_t \nabla_X Y, Z) &= -2 \partial_t g(\nabla_X Y, Z) + \altcyc \left(\partial_X \partial_t g(Z, Y) + \partial_t g([X, Y], Z)\right) \\
 &= -2 k (\nabla_X Y, Z) + \altcyc \left(\partial_X k (Z, Y) + k ([X, Y], Z)\right).
 \end{split}
-\]
-For the alternating, cyclic sum we have,
+\end{equation}
+For the alternating, cyclic sum of the first term we have,
 \begin{align*}
-\partial_X k (Z, Y) + k ([X, Y], Z) &= \nabla_X k (Z, Y) + k(\nabla_X Z, Y) + k(Z, \nabla_X Y) + k([X, Y], Z) \\
-&= \nabla_X k (Z, Y) + k(\nabla_X Z, Y) + 2 k(Z, \nabla_X Y) - k(\nabla_Y X, Z) \\
--\partial_Z k (Y, X) - k ([Y, Z], X) &= -\nabla_Z k (Y, X) - k(\nabla_Z Y, X) - k(Y, \nabla_Z X) - k([Y, Z], X) \\
-&= -\nabla_Z k (Y, X) - k(Y, \nabla_Z X) - k(\nabla_Y Z, X) \\
-\partial_Y k (X, Z) + k ([Z, X], Y) &= \nabla_Y k (X, Z) + k(\nabla_Y X, Z) + k(X, \nabla_Y Z) + k([Z, X], Y) \\
-&= \nabla_Y k (X, Z) + k(\nabla_Y X, Z) + k(X, \nabla_Y Z) + k(\nabla_Z X, Y) -  k(\nabla_X Z, Y)
+\partial_X k (Z, Y) &= \nabla_X k (Z, Y) + k(\nabla_X Z, Y) + k(Z, \nabla_X Y) \\
+-\partial_Z k (Y, X) &= -\nabla_Z k (Y, X) - k(\nabla_Z Y, X) - k(Y, \nabla_Z X) \\
+\partial_Y k (X, Z) &= \nabla_Y k (X, Z) + k(\nabla_Y X, Z) + k(X, \nabla_Y Z)
 \end{align*}
 Adding these together produces
 \[
 \begin{split}
-2 g(\partial_t \nabla_X Y, Z) &= \nabla_X k (Z, Y) - \nabla_Z k (Y, X) + \nabla_Y k (X, Z) \\
-&\quad - k(\nabla_Y Z, X) + k(X, \nabla_Y Z) \\
-&\quad  + k(\nabla_X Z, Y) - k(Y, \nabla_Z X) + k(\nabla_Z X, Y) -  k(\nabla_X Z, Y) \\
-&\quad + 2 k(Z, \nabla_X Y) - k(\nabla_Y X, Z) + k(\nabla_Y X, Z) -2 k (\nabla_X Y, Z) \\
-&= \altcyc \nabla_X k(Z, Y).
+\altcyc \partial_X k (Z, Y) &= \altcyc \nabla_X k (Z, Y) \\
+&\quad + k(\nabla_X Z, Y) - k(Y, \nabla_Z X) + k(X, \nabla_Y Z) - k(\nabla_Z Y, X) \\
+&\quad + k(\nabla_Y X, Z) + k(Z, \nabla_X Y) \\
+&= \altcyc \nabla_X k (Z, Y) - k([Z, X], Y) + k([Y, Z], X) - k([X, Y], Z) \\
+&\quad + 2 k(\nabla_X Y, Z) \\
+&= \altcyc \left(\nabla_X k (Z, Y) - k ([X, Y], Z)\right) + 2 k (\nabla_X Y, Z) .
+\end{split}
+\]
+Substitution into equation \eqref{eq:dt_koszul} then completes the proof of the first part.
 \end{split}
 \]
 \end{proof}
