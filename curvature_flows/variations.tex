@@ -94,6 +94,7 @@ Equivalently,
 Throughout this section \(F_t : M \to N\) will be a one-parameter family of immersions.
 
 \begin{lemma}
+\label{lem:g_t}
 The metric \(g_t\) induced by \(F_t\) has variation
 \[
 \partial_t g_t = \sym \left[(DV)^{\tang}\right]^{\flat}.
@@ -119,6 +120,83 @@ Recalling that we have \([V, F_{\ast} X] = 0\), then we compute
 whence
 \[
 \partial_t g (X, Y) = \sym g((DV)^{\tang} (X), Y).
+\]
+\end{proof}
+
+From the metric \(g_t\), we may form the Levi-Civita connection \(\nabla_t\) and also compute it's variation. Since the connection is determined uniquely from the metric, we express the variation of the connection in terms of the variation of the metric which we write,
+\[
+\partial_t g = k
+\]
+for \(k\) a symmetric \((0, 2)\)-tensor. Note that since the metric is symmetric, \(k\) must be symmetric: \(k(X, Y) = \partial_t (g(X, Y)) = \partial_t (g(Y, X)) = k(Y, X)\). When the variation of \(g_t\) is induced by the variation \(V\) of \(F_t\), \Cref{lem:g_t} gives us \(k(X, Y) = g((DV)^{\tang} (X), Y) + g(X, (DV)^{\tang} (Y))\).
+
+\begin{rem}
+Let us also note that although \(\nabla\) is not a tensor, we may still make the definition
+\[
+(\partial_t \nabla_t)_X Y = \partial_t((\nabla_t)_X Y)
+\]
+and compute the variation. To help illustrate that this is well defined, let
+\[
+\alpha_t(X, Y) = (\nabla_{t})_X Y - (\nabla_{0})_X Y.
+\]
+Because \(\nabla_t\) and \(\nabla_0\) both satisfy the Leibniz rule, \(\alpha_t\) is tensorial in both \(X\) and \(Y\) so that \(\partial_t \alpha_t\) is well defined. Then we have,
+\[
+(\partial_t \nabla_t)_X Y = \partial_t((\nabla_t)_X Y) = \partial_t (\alpha(X, Y) + (\nabla_{0})_X Y) = \partial_t \alpha (X, Y).
+\]
+Finally, observe that \(\partial_t \nabla_t = \partial_t \alpha\) is tensorial, and thus \emph{not} a connection, in contrast for example to the variation of a tensor, \(\partial_t T_t\) which is again a tensor of the same type as \(T\).
+\end{rem}
+
+We make use of the alternating, cyclic sum \(\altcyc\) defined by
+\[
+\altcyc T(X, Y, Z) = T(X, Y, Z) - T(Y, Z, X) + T(Z, X, Y).
+\]
+
+\begin{lemma}
+The Levi-Civita, \(\nabla_t\) induced by the metric variation \(\partial_t g = k\) has variation satisfying,
+\[
+g(\partial_t (\nabla_t)_X Y, Z) = \frac{1}{2} \altcyc \nabla_X k(Z, Y)
+\]
+If the metric variation is induced by the variation \(V\) of \(F_t\), then
+\[
+g(\partial_t (\nabla_t)_X Y, Z) = \frac{1}{2} \altcyc \sym \nabla_X g((DV)^{\tang} (Z), Y).
+\]
+\end{lemma}
+
+\begin{proof}
+We use the Koszul formula,
+\[
+\begin{split}
+2 g(\nabla_X Y, Z) &= \partial_X g(Z, Y) - \partial_Z g(Y, X) + \partial_Y g(X, Z) \\
+&\quad + g([X, Y], Z) - g([Y, Z], X) + g(Z, [X, Y]) \\
+&= \altcyc \left(\partial_X g(Z, Y) + g([X, Y], Z)\right).
+\end{split}
+\]
+Keep in mind here that everything takes place on the tangent bundle so the only \(t\) dependence is in \(g\) and \(\nabla\). In particular, the Lie bracket is simply the Lie bracket on \(M\) which has no \(t\) dependence.
+
+Differentiating the Koszul formula and using \(\partial_t \partial_X = \partial_X \partial_t\) gives
+\[
+\begin{split}
+2 g(\partial_t \nabla_X Y, Z) &= -2 \partial_t g(\nabla_X Y, Z) + \altcyc \left(\partial_X \partial_t g(Z, Y) + \partial_t g([X, Y], Z)\right) \\
+&= -2 k (\nabla_X Y, Z) + \altcyc \left(\partial_X k (Z, Y) + k ([X, Y], Z)\right).
+\end{split}
+\]
+For the alternating, cyclic sum we have,
+\begin{align*}
+\partial_X k (Z, Y) + k ([X, Y], Z) &= \nabla_X k (Z, Y) + k(\nabla_X Z, Y) + k(Z, \nabla_X Y) + k([X, Y], Z) \\
+&= \nabla_X k (Z, Y) + k(\nabla_X Z, Y) + 2 k(Z, \nabla_X Y) - k(\nabla_Y X, Z) \\
+-\partial_Z k (Y, X) - k ([Y, Z], X) &= -\nabla_Z k (Y, X) - k(\nabla_Z Y, X) - k(Y, \nabla_Z X) - k([Y, Z], X) \\
+&= -\nabla_Z k (Y, X) - k(Y, \nabla_Z X) - k(\nabla_Y Z, X) \\
+\partial_Y k (X, Z) + k ([Z, X], Y) &= \nabla_Y k (X, Z) + k(\nabla_Y X, Z) + k(X, \nabla_Y Z) + k([Z, X], Y) \\
+&= \nabla_Y k (X, Z) + k(\nabla_Y X, Z) + k(X, \nabla_Y Z) + k(\nabla_Z X, Y) -  k(\nabla_X Z, Y)
+\end{align*}
+Adding these together produces
+\[
+\begin{split}
+2 g(\partial_t \nabla_X Y, Z) &= \nabla_X k (Z, Y) - \nabla_Z k (Y, X) + \nabla_Y k (X, Z) \\
+&\quad - k(\nabla_Y Z, X) + k(X, \nabla_Y Z) \\
+&\quad  + k(\nabla_X Z, Y) - k(Y, \nabla_Z X) + k(\nabla_Z X, Y) -  k(\nabla_X Z, Y) \\
+&\quad + 2 k(Z, \nabla_X Y) - k(\nabla_Y X, Z) + k(\nabla_Y X, Z) -2 k (\nabla_X Y, Z) \\
+&= \altcyc \nabla_X k(Z, Y).
+\end{split}
 \]
 \end{proof}
 
