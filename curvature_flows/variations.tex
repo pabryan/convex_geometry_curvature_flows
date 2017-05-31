@@ -13,10 +13,8 @@ Let \(F_t\) be a one-parameter family of maps. The \emph{variation vector field}
 \[
 V_t = F_{\ast} \partial_t
 \]
-We also sometimes use the notation \(\dot{F} = \partial_t F = V\).
+For each \(t\), \(V_t \in \Gamma(F_t^{\ast} TN)\). We also sometimes use the notation \(\dot{F} = \partial_t F = V\).
 \end{defn}
-
-For each \(t\), \(V_t \in \Gamma(F_t^{\ast} TN, M)\)
 
 \begin{defn}
 Let \(G : M \to N\). A \emph{variation} of \(G\) is a one-parameter family of maps \(F_t\), \(t \in (-\epsilon, \epsilon)\) such that \(F_0 = G\).
@@ -25,49 +23,35 @@ Let \(G : M \to N\). A \emph{variation} of \(G\) is a one-parameter family of ma
 In the case of variations, we are interested in the map \(G\) and not typically the full one-parameter family \(F_t\). In this case, the variation vector is \(V_0\).
 
 \begin{lemma}
-Let \(V \in \Gamma(G^{\ast} N, M)\). Then there exists local variations \(F_t\) of \(G\) such that \(\dot{F}_{t=0} = V\) locally. If \(M\) is compact, then there exists a global variation \(F_t\) with \(\dot{F}_{t=0} = V\).
+Let \(W \in \Gamma(G^{\ast} N, M)\). Then there exists local variations \(F_t\) of \(G\) such that \(V_0 = \dot{F}_{t=0} = W\) locally. If \(M\) is compact, then there exists a global variation \(F_t\) with \(V_0 = \dot{F}_{t=0} = W\).
 \end{lemma}
 
 \begin{proof}
 Certainly this works for immersion but perhaps it works in the generality given here?
 \end{proof}
 
-In the case where each \(F_t\) is an immersion, we have the splitting
-\[
-F_t^{\ast} TN \simeq TM \oplus \nu_t M
-\]
-with we decompose the variation vector
-\[
-V_t = V^{\tang}_t + V^{\perp}_t
-\]
-into the tangential \(V^{\tang}_t\) and normal \(V^{\perp}_t\) parts.
-
-Let us now compute the variation of the differential \(dF_t\). The principle point to keep in mind is that \(dF_t \in \Gamma(T^{\ast} M \otimes F_t^{\ast} TN)\) which is a changing bundle with respect to \(t\) and we must account for this change. Another way to think of this is that the fibre of \(F_t^{\ast} TN\) over \(x\), \((F_t^{\ast} TN)_x = T_{F_t(x)} N\) and again we must take into account the variation of the base point \(F_t(x)\). In other words, we can't directly compute the variation in the fibre since the fibre is itself varying and thus require a connection \(D\) on \(TN\) to ``connect'' the fibres.
+Let us now compute the variation of the differential \(dF_t\). The principle point to keep in mind is that \(dF_t \in \Gamma(T^{\ast} M \otimes F_t^{\ast} TN)\) which is a changing bundle with respect to \(t\) and we must account for this change. Another way to think of this is that the fibre of \(F_t^{\ast} TN\) over \(x\) is \((F_t^{\ast} TN)_x = T_{F_t(x)} N\). We must take into account the variation of the base point \(F_t(x)\). In other words, we can't directly compute the variation in the fibre since the fibre is itself varying and thus require a connection \(D\) on \(TN\) to ``connect'' the fibres.
 
 \begin{prop}
 The variation of \(dF_t\) is
 \[
-D_t dF_t = DV = (DV)^{\tang} + (DV)^{\perp}.
+D_t dF_t = DV.
 \]
 \end{prop}
 
 \begin{proof}
-For a fixed tangent vector \(X \in TM\) and then since \([\partial_t, X] = 0 \Rightarrow [V, F_{\ast} X] = 0\) we compute
+For a fixed tangent vector \(X \in TM\), since \([\partial_t, X] = 0 \Rightarrow [V, F_{\ast} X] = 0\) we compute
 \[
 \begin{split}
 D_t dF_t (X) &= D_V (dF_t (X)) = D_V F_{\ast} X \\
-&= D_{F_{ast} X} V + [V, F_{\ast} X] \\
+&= D_{F_{\ast} X} V + [V, F_{\ast} X] \\
 &= DV (F_{\ast} X).
 \end{split}
 \]
 \end{proof}
 
 \begin{rem}
-Note that \((DV^{\tang}) \ne D(V^{\tang})\) in general, and likewise for the normal part.
-\end{rem}
-
-\begin{rem}
-It's convenient, partricularly when considering the variation of the connection and the curvature tensor, to have the variation of the The push forward of the Lie bracket:
+It's convenient, partricularly when considering the variation of the connection and the curvature tensor, to have the variation of the the push forward of the Lie bracket:
 \[
 D_t F_{\ast} [X, Y] = D_t [F_{\ast} X, F_{\ast} Y] = DV(F_{\ast} [X, Y]).
 \]
@@ -91,7 +75,33 @@ Equivalently,
 \]
 \end{defn}
 
-Throughout this section \(F_t : M \to N\) will be a one-parameter family of immersions.
+Throughout this section \(F_t : M \to N\) will be a one-parameter family of immersions. Then we have the splitting
+\[
+F_t^{\ast} TN \simeq TM \oplus \nu_t M
+\]
+with we decompose the variation vector
+\[
+V_t = V^{\tang}_t + V^{\perp}_t = V^{\tang}_t + \varphi_t \nu_t
+\]
+into the tangential \(V^{\tang}_t\) and normal \(V^{\perp}_t\) parts and where
+\[
+\varphi_t = \inpr{V_t}{\nu_t}.
+\]
+
+\begin{rem}
+Most of our variations result in terms involving \(DV\) the covariant derviative of \(V\). Note that \((DV)^{\tang} \ne D(V^{\tang})\) in general, and likewise for the normal part. Expressed somewhat cumbersomely we have
+\[
+\begin{split}
+DV &= D(V^{\tang} + \varphi \nu) = D(V^{\tang}) + d\varphi \otimes \nu - \varphi\W \\
+&= \underbrace{(D(V^{\tang}))^{\tang} - \varphi\W}_{(DV)^{\tang}} + \underbrace{(D(V^{\tang}))^{\perp} + d\varphi \otimes \nu}_{(DV)^{\perp}}.
+\end{split}
+\]
+In the particular case that \(V^{\tang} \equiv 0\) we have the more appealing,
+\[
+DV = -\varphi\W + d\varphi \otimes \nu.
+\]
+However, we will encounter ample situations where \(V \not\equiv 0\). To avoid the cumbersome notation above, in this section we will tend to avoid using the decomposition \(V = V^{\tang} + V^{\perp}\), deferring it to more explicit situations in later chapters as needed.
+\end{rem}
 
 \begin{lemma}
 \label{lem:dt_g}
