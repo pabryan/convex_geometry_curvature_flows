@@ -1,5 +1,7 @@
 \section{One Parameter Families}
 
+\subsection*{One Parameter Families of Maps}
+
 \begin{defn}
 A \emph{one-parameter family} of maps \(M \to N\) is a map
 \[
@@ -16,13 +18,15 @@ V_t = F_{\ast} \partial_t
 For each \(t\), \(V_t \in \Gamma(F_t^{\ast} TN)\). We also sometimes use the notation \(\dot{F} = \partial_t F = V\).
 \end{defn}
 
+\subsection*{Variations of One Parameter Families of Maps}
+
 \begin{defn}
 Let \(G : M \to N\). A \emph{variation} of \(G\) is a one-parameter family of maps \(F_t\), \(t \in (-\epsilon, \epsilon)\) such that \(F_0 = G\).
 \end{defn}
 
 In the case of variations, we are interested in the map \(G\) and not typically the full one-parameter family \(F_t\). In this case, the variation vector is \(V_0\).
 
-\begin{lemma}
+\begin{lemma}[Existence of Variations]
 Let \(W \in \Gamma(G^{\ast} N, M)\). Then there exists local variations \(F_t\) of \(G\) such that \(V_0 = \dot{F}_{t=0} = W\) locally. If \(M\) is compact, then there exists a global variation \(F_t\) with \(V_0 = \dot{F}_{t=0} = W\).
 \end{lemma}
 
@@ -32,7 +36,7 @@ Certainly this works for immersion but perhaps it works in the generality given 
 
 Let us now compute the variation of the differential \(dF_t\). The principle point to keep in mind is that \(dF_t \in \Gamma(T^{\ast} M \otimes F_t^{\ast} TN)\) which is a changing bundle with respect to \(t\) and we must account for this change. Another way to think of this is that the fibre of \(F_t^{\ast} TN\) over \(x\) is \((F_t^{\ast} TN)_x = T_{F_t(x)} N\). We must take into account the variation of the base point \(F_t(x)\). In other words, we can't directly compute the variation in the fibre since the fibre is itself varying and thus require a connection \(D\) on \(TN\) to ``connect'' the fibres.
 
-\begin{prop}
+\begin{prop}[Variation of the Differential]
 The variation of \(dF_t\) is
 \[
 D_t dF_t = DV.
@@ -60,6 +64,8 @@ D_t F_{\ast} [X, Y] = D_t [F_{\ast} X, F_{\ast} Y] = DV(F_{\ast} [X, Y]).
 Higher derivatives of \(F\) involve the variation of the connection and so we postpone the computation of these variations until we have computed the variation of connections.
 
 \section{Variation of Geometry}
+
+\subsection*{Variations of One Parameter Families of Tensor Fields}
 
 For one-parameter families of tensor fields tangent to \(M\) - i.e. in \(T^p_q M\) we may compute the variation by differentiating in the fibre and thus require no connection. This is similar (but not identical) to the Lie derivative.
 
@@ -93,6 +99,8 @@ For better readability, we will tend to use less parenthesis in what follows whi
 It should be clear to the reader that we may also trace \(T\) with a one-form \(\alpha\) and obtain similar rules, that we may trace with respect to different slots of \(T\), and that we may iterate traces as long as there are remaining slots in \(T\) and obtain similar formulae. Finally, the reader is advised to check explicitly that \(\partial_t\) commutes with traces and obeys the \(\otimes\) product rule directly from the definition of \(\partial_t T_t\).
 \end{rem}
 
+\subsection*{Splitting of The Pull-Back Bundle}
+
 Throughout this section \(F_t : M \to N\) will be a one-parameter family of immersions. Then we have the splitting
 \[
 F_t^{\ast} TN \simeq TM \oplus \nu_t M
@@ -121,7 +129,9 @@ DV = -\varphi\W + d\varphi \otimes \nu.
 However, we will encounter ample situations where \(V \not\equiv 0\). To avoid the cumbersome notation above, in this section we will tend to avoid using the decomposition \(V = V^{\tang} + V^{\perp}\), deferring it to more explicit situations in later chapters as needed.
 \end{rem}
 
-\begin{lemma}
+\subsection*{Variation of Intrinsic Geometry}
+
+\begin{lemma}[Variation of the Metric]
 \label{lem:dt_g}
 The metric \(g_t\) induced by \(F_t\) has variation
 \[
@@ -178,7 +188,7 @@ We make use of the alternating, cyclic sum \(\altcyc\) defined by
 \altcyc T(X, Y, Z) = T(X, Y, Z) - T(Y, Z, X) + T(Z, X, Y).
 \]
 
-\begin{lemma}
+\begin{lemma}[Variation of the Levi-Civita Connection]
 The Levi-Civita, \(\nabla_t\) induced by the metric variation \(\partial_t g = k\) has variation satisfying,
 \[
 g(\partial_t (\nabla_t)_X Y, Z) = \frac{1}{2} \altcyc \nabla_X k(Z, Y)
@@ -230,9 +240,11 @@ Substitution into equation \eqref{eq:dt_koszul} then completes the proof of the 
 For the second part, just use \Cref{lem:dt_g}.
 \end{proof}
 
-Next, let us compute the variation of the normal. Again, the normal lies in changing normal bundle and we must account for that change in our variation. Note that there are two choices for the unit normal corresponding to the two choices of orientation for \(M_t\). The variation holds regardless of our choice which the reader may verify explicitly by making the change \(\nu_t \mapsto -\nu_t\).
+\subsection*{Variation of Extrinsic Geometry}
 
-\begin{lemma}
+Next, let us compute the variation of the normal. Again, the normal lies in the changing normal bundle and we must account for that change in our variation. Note also that there are two choices for the unit normal corresponding to the two choices of orientation for \(M_t\). The variation holds regardless of our choice which the reader may verify explicitly by making the change \(\nu_t \mapsto -\nu_t\).
+
+\begin{lemma}[Variation of the Unit Normal]
 \label{lem:nu_t}
 The unit normal \(\nu_t\) induced by \(F_t\) has variation satisfying
 \[
@@ -264,4 +276,3 @@ so that
 \inpr{D_t \nu}{F_{\ast} X} = - \inpr{\nu_t}{DV(F_{\ast} X)} = - \inpr{\nu_t}{(DV)^{\perp}(F_{\ast} X)}
 \]
 \end{proof}
-\section{Linearisation of the Flow}
