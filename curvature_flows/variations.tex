@@ -94,7 +94,7 @@ Equivalently,
 Throughout this section \(F_t : M \to N\) will be a one-parameter family of immersions.
 
 \begin{lemma}
-\label{lem:g_t}
+\label{lem:dt_g}
 The metric \(g_t\) induced by \(F_t\) has variation
 \[
 \partial_t g_t = \sym \left[(DV)^{\tang}\right]^{\flat}.
@@ -127,7 +127,7 @@ From the metric \(g_t\), we may form the Levi-Civita connection \(\nabla_t\) and
 \[
 \partial_t g = k
 \]
-for \(k\) a symmetric \((0, 2)\)-tensor. Note that since the metric is symmetric, \(k\) must be symmetric: \(k(X, Y) = \partial_t (g(X, Y)) = \partial_t (g(Y, X)) = k(Y, X)\). When the variation of \(g_t\) is induced by the variation \(V\) of \(F_t\), \Cref{lem:g_t} gives us \(k(X, Y) = g((DV)^{\tang} (X), Y) + g(X, (DV)^{\tang} (Y))\).
+for \(k\) a symmetric \((0, 2)\)-tensor. Note that since the metric is symmetric, \(k\) must be symmetric: \(k(X, Y) = \partial_t (g(X, Y)) = \partial_t (g(Y, X)) = k(Y, X)\). When the variation of \(g_t\) is induced by the variation \(V\) of \(F_t\), \Cref{lem:dt_g} gives us \(k(X, Y) = g((DV)^{\tang} (X), Y) + g(X, (DV)^{\tang} (Y))\).
 
 \begin{rem}
 Let us also note that although \(\nabla\) is not a tensor, we may still make the definition
@@ -199,7 +199,7 @@ Adding these together produces
 \]
 Substitution into equation \eqref{eq:dt_koszul} then completes the proof of the first part.
 
-For the second part, just use \Cref{lem:g_t}.
+For the second part, just use \Cref{lem:dt_g}.
 \end{proof}
 
 \section{Linearisation of the Flow}
