@@ -276,3 +276,62 @@ so that
 \inpr{D_t \nu}{F_{\ast} X} = - \inpr{\nu_t}{DV(F_{\ast} X)} = - \inpr{\nu_t}{(DV)^{\perp}(F_{\ast} X)}
 \]
 \end{proof}
+
+We may use the normal variation to compute the variation of the Weingarten map \(\W = \W_{\nu} = -D\nu\). An interesting point to note is that even though \(\W\) is constructed from \(\nu\), since \(\nu\) is unit length we have \(\W : TM \to TM\) is tangential. Thus \(\partial_t \W\) is well defined, but we must interpret this correctly by considering \(\W \in \Gamma(T^{\ast} M \otimes TM)\):
+\[
+\partial_t \W (X, \alpha) = \partial_t \alpha(\W(X))
+\]
+for fixed \(X, \alpha\). As with the variation of the normal, the variation of \(\W\) holds with either choice of unit normal defining \(\W\).
+
+\begin{lemma}[Variation of the Weingarten Map]
+\label{lem:dt_W}
+The Weingarten map \(\W\) induced by \(F_t\) has variation satisfying
+\[
+\partial_t \W =
+\]
+\end{lemma}
+
+\begin{proof}
+A little care must be taken in how we approach this variation. The difficulty arises in dealing with the \(F_{\ast}^{-1}\) term in
+\[
+\W(X, \alpha) = \alpha(\W(X)) = -\alpha(F_{\ast}^{-1} D\nu(F_{\ast} X)).
+\]
+We can circumvent this difficulty by letting \(Y\) be the unique tangent vector such that
+\[
+\alpha(Z) = g(Y, Z)
+\]
+for every tangent vector \(Z\). Then we have
+\[
+\W(X, \alpha) = g(Y, \W(X)) = -\inpr{F_{\ast} Y}{D\nu(F_{\ast} X)}.
+\]
+We see in this formulation, the \(F_{\ast}^{-1}\) term has been turned into \(F_{\ast} Y\) which we know how to deal with.
+
+Now we differentiate,
+\[
+\begin{split}
+\partial_t \W(X, \alpha) &= -\partial_t \inpr{F_{\ast} Y}{D\nu(F_{\ast} X)} \\
+&= -\inpr{D_V F_{\ast} Y}{D\nu(F_{\ast} X)} - \inpr{F_{\ast} Y}{D_V D\nu(F_{\ast} X)} \\
+&= -\inpr{(DV)^{\tang} (F_{\ast} Y)}{\W(X)} - \inpr{F_{\ast} Y}{D_V D\nu(F_{\ast} X)}
+\end{split}
+\]
+\end{proof}
+
+The normal bundle valued second fundamental form, \(h_t\) defined by \(h_t(X, Y) = (D_{F_{\ast} X} F_{\ast} Y)^{\perp}\) is normal bundle valued and yet again we take into account the changing bundle. On the other hand, for a choice of unit normal vector \(\nu_t\), the scalar valued second fundamental form \(A_{\nu_t}\), defined by \(A_{\nu_t} (X, Y) = \inpr{h_t(X, Y)}{\nu_t}\) is a bilinear form on the tangent bundle and hence \(\partial_t A_{\nu_t}\) is well defined.
+
+\begin{lemma}[Variation of the Second Fundamental Form]
+The normal bundle valued second fundamental form \(h_t\) induced by \(F_t\) has variation
+\[
+D_t h_t =
+\]
+The scalar valued second fundamental form \(A_t\) induced by \(F_t\) has variation
+\[
+\partial_t A_t =
+\]
+\end{lemma}
+
+\begin{proof}
+We use
+\[
+h(X, Y) = D_{F_{\ast} X} F_{\ast} Y - F_{\ast} \nabla_X Y.
+\]
+\end{proof}
