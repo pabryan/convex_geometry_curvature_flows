@@ -75,6 +75,24 @@ Equivalently,
 \]
 \end{defn}
 
+\begin{rem}
+Taking partial derivatives, \(\partial_t\) commutes with taking traces. That is, given \(T_t \in \Gamma(T^p_q M)\) a one-parameter family of \((p,q)\) tensor fields and \(X \in TM\) we may take the trace
+\[
+\left(\Tr (T_t \otimes X)\right) (X_1, \cdots, X_{p-1}, \alpha^1, \cdots, \alpha^q) = T_t(X, X_1, \cdots, X_{p-1}, \alpha^1, \cdots, \alpha^q).
+\]
+Then
+\[
+\partial_t \left(\Tr (T_t \otimes X)\right) = \Tr \left((\partial_t T_t) \otimes X\right).
+\]
+More generally, if \(X_t\) is time dependent, then \(\partial_t\) still commutes with traces but we have the product rule for \(\otimes\):
+\[
+\partial_t \left(\Tr (T_t \otimes X_t)\right) = \Tr \left((\partial_t T_t) \otimes X\right) + \Tr \left(T_t \otimes (\partial_t X)\right).
+\]
+For better readability, we will tend to use less parenthesis in what follows which should not cause any confusion.
+
+It should be clear to the reader that we may also trace \(T\) with a one-form \(\alpha\) and obtain similar rules, that we may trace with respect to different slots of \(T\), and that we may iterate traces as long as there are remaining slots in \(T\) and obtain similar formulae. Finally, the reader is advised to check explicitly that \(\partial_t\) commutes with traces and obeys the \(\otimes\) product rule directly from the definition of \(\partial_t T_t\).
+\end{rem}
+
 Throughout this section \(F_t : M \to N\) will be a one-parameter family of immersions. Then we have the splitting
 \[
 F_t^{\ast} TN \simeq TM \oplus \nu_t M
