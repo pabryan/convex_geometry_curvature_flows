@@ -157,7 +157,7 @@ g(\partial_t (\nabla_t)_X Y, Z) = \frac{1}{2} \altcyc \nabla_X k(Z, Y)
 \]
 If the metric variation is induced by the variation \(V\) of \(F_t\), then
 \[
-g(\partial_t (\nabla_t)_X Y, Z) = \frac{1}{2} \altcyc \sym \nabla_X g((DV)^{\tang} (Z), Y).
+g(\partial_t (\nabla_t)_X Y, Z) = \frac{1}{2} \altcyc \nabla_X \sym g((DV)^{\tang} (Z), Y).
 \]
 \end{lemma}
 
@@ -198,6 +198,8 @@ Adding these together produces
 \end{split}
 \]
 Substitution into equation \eqref{eq:dt_koszul} then completes the proof of the first part.
+
+For the second part, just use \Cref{lem:g_t}.
 \end{proof}
 
 \section{Linearisation of the Flow}
