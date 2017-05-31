@@ -82,6 +82,7 @@ Equivalently,
 \end{defn}
 
 \begin{rem}
+\label{rem:dt_traces}
 Taking partial derivatives, \(\partial_t\) commutes with taking traces. That is, given \(T_t \in \Gamma(T^p_q M)\) a one-parameter family of \((p,q)\) tensor fields and \(X \in TM\) we may take the trace
 \[
 \left(\Tr (T_t \otimes X)\right) (X_1, \cdots, X_{p-1}, \alpha^1, \cdots, \alpha^q) = T_t(X, X_1, \cdots, X_{p-1}, \alpha^1, \cdots, \alpha^q).
@@ -277,41 +278,50 @@ so that
 \]
 \end{proof}
 
-We may use the normal variation to compute the variation of the Weingarten map \(\W = \W_{\nu} = -D\nu\). An interesting point to note is that even though \(\W\) is constructed from \(\nu\), since \(\nu\) is unit length we have \(\W : TM \to TM\) is tangential. Thus \(\partial_t \W\) is well defined, but we must interpret this correctly by considering \(\W \in \Gamma(T^{\ast} M \otimes TM)\):
+We may use the normal variation to compute the variation of the Weingarten map \(\W = \W_{\nu} = -D\nu\). An interesting point to note is that even though \(\W\) is constructed from \(\nu\), since \(\nu\) is unit length we have \(\W : TM \to TM\) is tangential. Thus \(\partial_t \W\) is well defined, but we must interpret this correctly according to \Cref{rem:dt_traces}. Either we consider \(\W \in \Gamma(T^{\ast} M \otimes TM)\) in which case,
 \[
 \partial_t \W (X, \alpha) = \partial_t \alpha(\W(X))
 \]
-for fixed \(X, \alpha\). As with the variation of the normal, the variation of \(\W\) holds with either choice of unit normal defining \(\W\).
+for fixed \(X, \alpha\) or we consider for each fixed \(X\) the one-parameter family of tangent vectors \(\W_t(X)\) in which case
+\[
+\partial_t \W (X) = \partial_t (\W(X)).
+\]
+Either way we obtain the same result since \(\alpha\) is time-independent.
+
+As with the variation of the normal, the variation of \(\W\) holds with either choice of unit normal defining \(\W\).
 
 \begin{lemma}[Variation of the Weingarten Map]
 \label{lem:dt_W}
 The Weingarten map \(\W\) induced by \(F_t\) has variation satisfying
 \[
-\partial_t \W =
+F_{\ast} (\partial_t \W (X)) = \overline{\Rm} (F_{\ast} X, V)\nu + DV (\W (X)) - D(D_V \nu) ({F_{\ast} X})
 \]
+where \(D_V \nu\) is the vector field defined implicitly by the variation of the unit normal, \Cref{lem:nu_t}.
 \end{lemma}
 
 \begin{proof}
-A little care must be taken in how we approach this variation. The difficulty arises in dealing with the \(F_{\ast}^{-1}\) term in
+A little care must be taken in how we approach this variation. The difficulty arises from the definition of \(\W\):
 \[
-\W(X, \alpha) = \alpha(\W(X)) = -\alpha(F_{\ast}^{-1} D\nu(F_{\ast} X)).
+\W(X) = -F_{\ast}^{-1} D\nu(F_{\ast} X)
 \]
-We can circumvent this difficulty by letting \(Y\) be the unique tangent vector such that
-\[
-\alpha(Z) = g(Y, Z)
-\]
-for every tangent vector \(Z\). Then we have
-\[
-\W(X, \alpha) = g(Y, \W(X)) = -\inpr{F_{\ast} Y}{D\nu(F_{\ast} X)}.
-\]
-We see in this formulation, the \(F_{\ast}^{-1}\) term has been turned into \(F_{\ast} Y\) which we know how to deal with.
+which involves changing bundles and a sort of conjugation by \(F_{\ast}\). Thus for the computation we must make use of the connection \(D\) on \(F^{\ast} TN\) but somehow in the end all contributions from the connection must cancel out.
 
-Now we differentiate,
+The solution is to consider the Lie Bracket, \([\partial_t, \W(X)]\) for a time-independent vector field on \(M \times [0, T)\). We have for any smooth function \(M \times [0, T) \to \R\),
+\[
+[\partial_t, \W(X)] f = \partial_t (\W(X) f) - \W(X) \partial_t f = \partial_t (\W(X)) f.
+\]
+In other words,
+\[
+\partial_t \W(X) = [\partial_t, \W(X)].
+\]
+
+Now we may compute
 \[
 \begin{split}
-\partial_t \W(X, \alpha) &= -\partial_t \inpr{F_{\ast} Y}{D\nu(F_{\ast} X)} \\
-&= -\inpr{D_V F_{\ast} Y}{D\nu(F_{\ast} X)} - \inpr{F_{\ast} Y}{D_V D\nu(F_{\ast} X)} \\
-&= -\inpr{(DV)^{\tang} (F_{\ast} Y)}{\W(X)} - \inpr{F_{\ast} Y}{D_V D\nu(F_{\ast} X)}
+F_{\ast} \partial_t \W(X) &= F_{\ast} [\partial_t, \W(X)] = -[V, D_{F_{\ast} X} \nu] \\
+&= -D_V D_{F_{\ast} X} \nu + D_{D_{F_{\ast} X} \nu} V \\
+&= \overline{\Rm} (F_{\ast} X, V)\nu - D_{F_{\ast} X} D_V \nu + D_{[F_{\ast} X, V]} \nu + D_{\W(X)} V \\
+&= \overline{\Rm} (F_{\ast} X, V)\nu + DV (\W (X)) - D(D_V \nu) ({F_{\ast} X}).
 \end{split}
 \]
 \end{proof}
