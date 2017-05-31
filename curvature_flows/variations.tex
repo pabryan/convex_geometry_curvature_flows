@@ -202,4 +202,38 @@ Substitution into equation \eqref{eq:dt_koszul} then completes the proof of the 
 For the second part, just use \Cref{lem:dt_g}.
 \end{proof}
 
+Next, let us compute the variation of the normal. Again, the normal lies in changing normal bundle and we must account for that change in our variation. Note that there are two choices for the unit normal corresponding to the two choices of orientation for \(M_t\). The variation holds regardless of our choice which the reader may verify explicitly by making the change \(\nu_t \mapsto -\nu_t\).
+
+\begin{lemma}
+\label{lem:nu_t}
+The unit normal \(\nu_t\) induced by \(F_t\) has variation satisfying
+\[
+g(D_t \nu_t, F_{\ast} X) = - \inpr{\nu}{(DV)^{\perp} (F_{\ast} X)}.
+\]
+\end{lemma}
+
+\begin{proof}
+The equations defining \(\nu_t\) are
+\begin{align}
+\label{eq:nu_unit}
+\inpr{\nu_t}{\nu_t} &= 1. \\
+\label{eq:nu_normal}
+\inpr{\nu_t}{F_{\ast} X} &= 0.
+\end{align}
+
+Differentiating \eqref{eq:nu_unit} gives
+\[
+0 = 2 \inpr{D_t \nu_t}{\nu_t}
+\]
+so that \(D_t \nu_t\) is tangential.
+
+Differentiating \eqref{eq:nu_normal} gives
+\[
+0 = \inpr{D_t \nu_t}{F_{\ast} X} + \inpr{\nu_t}{D_{F_{\ast} X} V}
+\]
+so that
+\[
+\inpr{D_t \nu}{F_{\ast} X} = - \inpr{\nu_t}{DV(F_{\ast} X)} = - \inpr{\nu_t}{(DV)^{\perp}(F_{\ast} X)}
+\]
+\end{proof}
 \section{Linearisation of the Flow}
