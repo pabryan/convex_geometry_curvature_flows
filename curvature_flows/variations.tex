@@ -171,17 +171,17 @@ for \(k\) a symmetric \((0, 2)\)-tensor. Note that since the metric is symmetric
 \begin{rem}
 Let us also note that although \(\nabla\) is not a tensor, we may still make the definition
 \[
-(\partial_t \nabla_t)_X Y = \partial_t((\nabla_t)_X Y)
+(\partial_t \nabla^t)_X Y = \partial_t(\nabla^t_X Y)
 \]
 and compute the variation. To help illustrate that this is well defined, let
 \[
-\alpha_t(X, Y) = (\nabla_{t})_X Y - (\nabla_{0})_X Y.
+\alpha_t(X, Y) = \nabla^t_X Y - \nabla^0_X Y.
 \]
-Because \(\nabla_t\) and \(\nabla_0\) both satisfy the Leibniz rule, \(\alpha_t\) is tensorial in both \(X\) and \(Y\) so that \(\partial_t \alpha_t\) is well defined. Then we have,
+Because \(\nabla^t\) and \(\nabla^0\) both satisfy the Leibniz rule, \(\alpha_t\) is tensorial in both \(X\) and \(Y\) so that \(\partial_t \alpha_t\) is well defined. Then we have,
 \[
-(\partial_t \nabla_t)_X Y = \partial_t((\nabla_t)_X Y) = \partial_t (\alpha(X, Y) + (\nabla_{0})_X Y) = \partial_t \alpha (X, Y).
+(\partial_t \nabla^t)_X Y = \partial_t(\nabla^t_X Y) = \partial_t (\alpha(X, Y) + (\nabla^0_X Y) = \partial_t \alpha (X, Y).
 \]
-Finally, observe that \(\partial_t \nabla_t = \partial_t \alpha\) is tensorial, and thus \emph{not} a connection, in contrast for example to the variation of a tensor, \(\partial_t T_t\) which is again a tensor of the same type as \(T\).
+Finally, observe that \(\partial_t \nabla^t = \partial^t \alpha\) is tensorial, and thus \emph{not} a connection, in contrast for example to the variation of a tensor, \(\partial_t T_t\) which is again a tensor of the same type as \(T\).
 \end{rem}
 
 We make use of the alternating, cyclic sum \(\altcyc\) defined by
@@ -192,11 +192,11 @@ We make use of the alternating, cyclic sum \(\altcyc\) defined by
 \begin{lemma}[Variation of the Levi-Civita Connection]
 The Levi-Civita, \(\nabla_t\) induced by the metric variation \(\partial_t g = k\) has variation satisfying,
 \[
-g(\partial_t (\nabla_t)_X Y, Z) = \frac{1}{2} \altcyc \nabla_X k(Z, Y)
+g(\partial_t \nabla^t_X Y, Z) = \frac{1}{2} \altcyc \nabla_X k(Z, Y)
 \]
 If the metric variation is induced by the variation \(V\) of \(F_t\), then
 \[
-g(\partial_t (\nabla_t)_X Y, Z) = \frac{1}{2} \altcyc \nabla_X \sym g((DV)^{\tang} (Z), Y).
+g(\partial_t \nabla^t_X Y, Z) = \frac{1}{2} \altcyc \nabla_X \sym g((DV)^{\tang} (Z), Y).
 \]
 \end{lemma}
 
