@@ -116,19 +116,23 @@ into the tangential \(V^{\tang}_t\) and normal \(V^{\perp}_t\) parts and where
 \]
 
 \begin{rem}
-Most of our variations result in terms involving \(DV\) the covariant derviative of \(V\). Note that \((DV)^{\tang} \ne D(V^{\tang})\) in general, and likewise for the normal part. Expressed somewhat cumbersomely we have
+Most of our variations result in terms involving \(DV\), the covariant derviative of \(V\). Note that \((DV)^{\tang} \ne D(V^{\tang})\) in general, and likewise for the normal part. Expressed somewhat cumbersomely we have, in tangential directions
 \[
 \begin{split}
-DV &= D(V^{\tang} + \varphi \nu) = D(V^{\tang}) + d\varphi \otimes \nu - \varphi\W \\
-&= \underbrace{(D(V^{\tang}))^{\tang} - \varphi\W}_{(DV)^{\tang}} + \underbrace{(D(V^{\tang}))^{\perp} + d\varphi \otimes \nu}_{(DV)^{\perp}}.
+DV|_{TM} &= D(V^{\tang} + \varphi \nu)|_{TM} = D(V^{\tang})|_{TM} + d\varphi \otimes \nu - \varphi\W \\
+&= \underbrace{(D(V^{\tang}))^{\tang}|_{TM} - \varphi\W}_{(DV)^{\tang}} + \underbrace{(D(V^{\tang}))^{\perp}|_{TM} + d\varphi \otimes \nu}_{(DV)^{\perp}}.
 \end{split}
 \]
 In the particular case that \(V^{\tang} \equiv 0\) we have the more appealing,
 \[
-DV = -\varphi\W + d\varphi \otimes \nu.
+DV|_{TM} = -\varphi\W + d\varphi \otimes \nu.
 \]
-However, we will encounter ample situations where \(V \not\equiv 0\). To avoid the cumbersome notation above, in this section we will tend to avoid using the decomposition \(V = V^{\tang} + V^{\perp}\), deferring it to more explicit situations in later chapters as needed.
+However, we will encounter ample situations where \(V^{\tang} \not\equiv 0\) and thus require the general form of the variations, which will express in terms of \(V\) without decomposition. On the other hand, because of the geometric invariance of the flow, \(V^{\tang}\) plays no geometric role and from this point of view, variations with \(V^{\tang} \equiv 0\) are the only geometrically relevant variations. Thus we shall also provide the variational formula in the case \(V^{\tang} \equiv 0\) expressed in terms of the decomposition.
+
+\textbf{We also need \(D^2 V\) in tangential directions, and \(DV\) in normal directions.}
 \end{rem}
+
+\textbf{It might also be worth introducing some notation for \((DV)^{\tang}\). For example in BIS4 parametrisation, \((DV)^{\tang}\) is already tangent and we called this \(A\). In general we could call the tangential projection something but not \(A\) because that's the second fundamental form here. Maybe this can just be written \(D_t\) which probably should be introduced somewhere here anyway. The natural thing is \(D_t X = (D_V F_{\ast})^{\tang} = (DV (F_{\ast} X))^{\tang}\). This recovers \(A\) from BIS4 since \(DV = (DV)^{\tang}\) in that case.}
 
 \subsection*{Variation of Intrinsic Geometry}
 
@@ -137,6 +141,10 @@ However, we will encounter ample situations where \(V \not\equiv 0\). To avoid t
 The metric \(g_t\) induced by \(F_t\) has variation
 \[
 \partial_t g_t = \sym \left[(DV)^{\tang}\right]^{\flat}.
+\]
+In the case \(V^{\tang} \equiv 0\),
+\[
+\partial_t g = -2 \varphi A.
 \]
 \end{lemma}
 
@@ -160,6 +168,12 @@ whence
 \[
 \partial_t g (X, Y) = \sym g((DV)^{\tang} (X), Y).
 \]
+
+When \(V^{\tang} \equiv 0\), we have \((DV)^{\tang} = -\varphi \W\) and so
+\[
+g((DV)^{\tang}(X), Y) = -g(\varphi \W(X), Y) = -\varphi A(X, Y)
+\]
+which is symmetric, hence we drop the \(\sym\) and gain a \(2\).
 \end{proof}
 
 From the metric \(g_t\), we may form the Levi-Civita connection \(\nabla_t\) and also compute it's variation. Since the connection is determined uniquely from the metric, we express the variation of the connection in terms of the variation of the metric which we write,
@@ -197,8 +211,13 @@ g(\partial_t \nabla^t_X Y, Z) = \frac{1}{2} \altcyc \nabla_X k(Z, Y)
 \]
 If the metric variation is induced by the variation \(V\) of \(F_t\), then
 \[
-g(\partial_t \nabla^t_X Y, Z) = \frac{1}{2} \altcyc \nabla_X \sym g((DV)^{\tang} (Z), Y).
+g(\partial_t \nabla^t_X Y, Z) = \frac{1}{2} \altcyc \nabla_X \sym g((DV)^{\tang} (Z), Y)
 \]
+and in the case \(V^{\tang} \equiv 0\),
+\[
+g(\partial_t \nabla^t_X Y, Z) = \altcyc \left[d\varphi(X) h(Z, Y) + \varphi \nabla_X h (Z, Y)\right]
+\]
+\textbf{Rewrite using Codazzi}
 \end{lemma}
 
 \begin{proof}
@@ -242,6 +261,8 @@ Substitution into equation \eqref{eq:dt_koszul} then completes the proof of the 
 For the second part, just use \Cref{lem:dt_g}.
 \end{proof}
 
+\textbf{Do variation of curvature tensor, Ricci tensor and scalar curvature}
+
 \subsection*{Variation of Extrinsic Geometry}
 
 Next, let us compute the variation of the normal. Again, the normal lies in the changing normal bundle and we must account for that change in our variation. Note also that there are two choices for the unit normal corresponding to the two choices of orientation for \(M_t\). The variation holds regardless of our choice which the reader may verify explicitly by making the change \(\nu_t \mapsto -\nu_t\).
@@ -251,6 +272,10 @@ Next, let us compute the variation of the normal. Again, the normal lies in the 
 The unit normal \(\nu_t\) induced by \(F_t\) has variation satisfying
 \[
 g(D_t \nu_t, F_{\ast} X) = - \inpr{\nu}{(DV)^{\perp} (F_{\ast} X)}.
+\]
+In the case \(V^{\tang} \equiv 0\),
+\[
+D_t \nu = -\grad \varphi.
 \]
 \end{lemma}
 
@@ -277,6 +302,12 @@ so that
 \[
 \inpr{D_t \nu}{F_{\ast} X} = - \inpr{\nu_t}{DV(F_{\ast} X)} = - \inpr{\nu_t}{(DV)^{\perp}(F_{\ast} X)}
 \]
+
+When \(V^{\tang} \equiv 0\), we have \((DV)^{\perp} = d\varphi \otimes \nu\) so that
+\[
+g(D_t \nu, X) = \inpr{D_t \nu}{F_{\ast} X} = -\inpr{\nu}{d\varphi(X) \nu} = -d\varphi (X)
+\]
+and hence \(D_t \nu = - \grad \varphi\).
 \end{proof}
 
 We may use the normal variation to compute the variation of the Weingarten map \(\W = \W_{\nu} = -D\nu\). An interesting point to note is that even though \(\W\) is constructed from \(\nu\), since \(\nu\) is unit length we have \(\W : TM \to TM\) is tangential. Thus \(\partial_t \W\) is well defined, but we must interpret this correctly according to \Cref{rem:dt_traces}. Either we consider \(\W \in \Gamma(T^{\ast} M \otimes TM)\) in which case,
@@ -298,6 +329,13 @@ The Weingarten map \(\W\) induced by \(F_t\) has variation satisfying
 F_{\ast} (\partial_t \W (X)) = \overline{\Rm} (F_{\ast} X, V)\nu + DV (\W (X)) - D(D_V \nu) ({F_{\ast} X})
 \]
 where \(D_V \nu\) is the vector field defined implicitly by the variation of the unit normal, \Cref{lem:nu_t}.
+
+In the case \(V^{\tang} \equiv 0\),
+\[
+F_{\ast} \partial_t \W (X) = \varphi \overline{\Rm} (F_{\ast} X, \nu) \nu - \varphi \W^2(X) + d\varphi(\W (X)) \nu + D(\grad \varphi) ({F_{\ast} X})
+\]
+
+\textbf{The left hand side is tangential but the right hand side has normal parts which must then cancel. So the LHS could be simplified.}
 \end{lemma}
 
 \begin{proof}
@@ -334,7 +372,7 @@ The normal bundle valued second fundamental form \(h_t\) induced by \(F_t\) has 
 \[
 \begin{split}
 D_t h_t (X, Y) &= \overline{\Rm} (V, F_{\ast} X) F_{\ast} Y - D^2 V(F_{\ast} X, F_{\ast} Y) + F_{\ast} \partial_t (\nabla_X Y) \\
-&\quad + DV (h(X, Y)) - h(DV^{\tang}(X), Y) - h(X, DV^{\tang}(Y)).
+&\quad + DV (h(X, Y)) - \sym h(DV^{\tang}(X), Y).
 \end{split}
 \]
 The scalar valued second fundamental form \(A_t\) induced by \(F_t\) has variation
