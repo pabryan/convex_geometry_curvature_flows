@@ -190,6 +190,7 @@ We make use of the alternating, cyclic sum \(\altcyc\) defined by
 \]
 
 \begin{lemma}[Variation of the Levi-Civita Connection]
+\label{lem:dt_nabla}
 The Levi-Civita, \(\nabla_t\) induced by the metric variation \(\partial_t g = k\) has variation satisfying,
 \[
 g(\partial_t \nabla^t_X Y, Z) = \frac{1}{2} \altcyc \nabla_X k(Z, Y)
@@ -326,22 +327,55 @@ F_{\ast} \partial_t \W(X) &= F_{\ast} [\partial_t, \W(X)] = -[V, D_{F_{\ast} X} 
 \]
 \end{proof}
 
-The normal bundle valued second fundamental form, \(h_t\) defined by \(h_t(X, Y) = (D_{F_{\ast} X} F_{\ast} Y)^{\perp}\) lies in the changing normal bundle. On the other hand, for a choice of unit normal vector \(\nu_t\), the scalar valued second fundamental form \(A_{\nu_t}\), defined by \(A_{\nu_t} (X, Y) = \inpr{h_t(X, Y)}{\nu_t}\) is a scalar valued bilinear form on the tangent bundle and hence \(\partial_t A_{\nu_t}\) is well defined.
+The normal bundle valued second fundamental form, \(h_t\) defined by \(h_t(X, Y) = (D_{F_{\ast} X} F_{\ast} Y)^{\perp}\) lies in the changing normal bundle. On the eother hand, for a choice of unit normal vector \(\nu_t\), the scalar valued second fundamental form \(A_{\nu_t}\), defined by \(A_{\nu_t} (X, Y) = \inpr{h_t(X, Y)}{\nu_t}\) is a scalar valued bilinear form on the tangent bundle and hence \(\partial_t A_{\nu_t}\) is well defined.
 
 \begin{lemma}[Variation of the Second Fundamental Form]
 The normal bundle valued second fundamental form \(h_t\) induced by \(F_t\) has variation
 \[
-D_t h_t =
+\begin{split}
+D_t h_t (X, Y) &= \overline{\Rm} (V, F_{\ast} X) F_{\ast} Y - D^2 V(F_{\ast} X, F_{\ast} Y) + F_{\ast} \partial_t (\nabla_X Y) \\
+&\quad + DV (h(X, Y)) - h(DV^{\tang}(X), Y) - h(X, DV^{\tang}(Y)).
+\end{split}
 \]
 The scalar valued second fundamental form \(A_t\) induced by \(F_t\) has variation
 \[
-\partial_t A_t =
+\partial_t A_t(X, Y) = \overline{\Rm} (V, F_{\ast} X, F_{\ast} Y, \nu) - \inpr{D^2 V(F_{\ast} X, F_{\ast} Y)}{\nu} + \inpr{DV (h(X, Y))}{\nu}.
 \]
 \end{lemma}
 
 \begin{proof}
-We use
+The derivative is given by
+\begin{equation}
+\label{eq:dt_h_productrule}
+\begin{split}
+D_t h (X, Y) &= D_t (h(X, Y)) - h(D_t X, Y) - h(X, D_t Y) \\
+&= D_t (h(X, Y)) - h(DV^{\tang}(X), Y) - h(X, DV^{\tang}(Y)).
+\end{split}
+\end{equation}
+
+For the first term in equation \eqref{eq:dt_h_productrule}, we use
 \[
-h(X, Y) = D_{F_{\ast} X} F_{\ast} Y - F_{\ast} \nabla_X Y.
+h(X, Y) = D_{F_{\ast} X} F_{\ast} Y - F_{\ast} \nabla_X Y
 \]
+so that (recalling \([V, F_{\ast} X] = 0\))
+\[
+\begin{split}
+D_t (h(X, Y)) &= D_V \left(D_{F_{\ast} X} F_{\ast} Y - F_{\ast} \nabla_X Y\right) \\
+&= \overline{\Rm} (V, F_{\ast} X) F_{\ast} Y - D_{F_{\ast} X} D_V F_{\ast} Y - D_V F_{\ast} \nabla_X Y \\
+&= \overline{\Rm} (V, F_{\ast} X) F_{\ast} Y - D_{F_{\ast} X} D_{F_{\ast} Y} V - D_V F_{\ast} \nabla_X Y \\
+&= \overline{\Rm} (V, F_{\ast} X) F_{\ast} Y - D^2 V(F_{\ast} X, F_{\ast} Y) + D_{D_{F_{\ast} X} F_{\ast} Y} V - D_V F_{\ast} \nabla_X Y \\
+&= \overline{\Rm} (V, F_{\ast} X) F_{\ast} Y - D^2 V(F_{\ast} X, F_{\ast} Y) + [F_{\ast} \nabla_X Y, V] + DV (h(X, Y)) \\
+&= \overline{\Rm} (V, F_{\ast} X) F_{\ast} Y - D^2 V(F_{\ast} X, F_{\ast} Y) + F_{\ast} \partial_t (\nabla_X Y) + DV (h(X, Y))
+\end{split}
+\]
+where \(\partial_t \nabla_X Y\) is given by \Cref{lem:dt_nabla}. The formula for \(D_t h\) now follows from substitution into equation \eqref{eq:dt_h_productrule}.
+
+For the scalar valued second fundamental form,
+\[
+\begin{split}
+\partial_t A(X, Y) &= \inpr{D_V h(X, Y)}{\nu} + \inpr{h(X, Y)}{D_V \nu} \\
+&= \overline{\Rm} (V, F_{\ast} X, F_{\ast} Y, \nu) - \inpr{D^2 V(F_{\ast} X, F_{\ast} Y)}{\nu} + \inpr{DV (h(X, Y))}{\nu}
+\end{split}
+\]
+since \(F_{\ast} \partial_t (\nabla_X Y) \perp \nu\), and \(D_V \nu \perp \nu\) while \(h(X, Y)\) is normal bundle valued.
 \end{proof}
